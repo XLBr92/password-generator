@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gerador de Senhas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #000000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+    }
+    .container {
+      background: #fad503;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+      .container1 {
+      background: #fad503;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 300px;
+      
+    }
+
+    .container2 {
+      background: #fad503;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 300px;
+      
+    }
+
+    
+    .container3 {
+      background: #fad503;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 300px;
+      
+    }
+
+    .content {
+      border-radius: 12px;
+      align-content: flex-start;
+      
+      
+      
+    }
+
+
+    .result {
+      font-family: monospace;
+      font-size: 16px;
+      word-break: break-all;
+      background: #f72408;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="number"] {
+      width: 100%;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #104b10;
+      color: rgb(255, 255, 255);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1558b0;
+    }
+  </style>
+</head>
+<body><div class="content">
+  <div class="container">
+    <h2>Gerador de Senhas</h2>
+    <div class="result" id="password">Clique para gerar</div>
+
+    <label>
+      Quantidade de Caracteres:
+      <input type="number" id="length" min="4" max="42" value="16">
+    </label>
+    <label><input type="checkbox" id="uppercase" checked> Letras maiúsculas</label>
+    <label><input type="checkbox" id="lowercase" checked> Letras minúsculas</label>
+    <label><input type="checkbox" id="numbers" checked> Números</label>
+    <label><input type="checkbox" id="symbols" checked> Símbolos</label>
+
+    <button onclick="generatePassword()">Gerar Senha</button>
+  </div>
+
+  <script>
+    function generatePassword() {
+      const length = parseInt(document.getElementById("length").value);
+      const useUppercase = document.getElementById("uppercase").checked;
+      const useLowercase = document.getElementById("lowercase").checked;
+      const useNumbers = document.getElementById("numbers").checked;
+      const useSymbols = document.getElementById("symbols").checked;
+
+      const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const lowercase = "abcdefghijklmnopqrstuvwxyz";
+      const numbers = "0123456789";
+      const symbols = "!@#$%^&*()-_=+[]{};:,.<>?";
+
+      let allChars = "";
+      let guaranteed = "";
+
+      if (useUppercase) {
+        allChars += uppercase;
+        guaranteed += randomChar(uppercase);
+      }
+      if (useLowercase) {
+        allChars += lowercase;
+        guaranteed += randomChar(lowercase);
+      }
+      if (useNumbers) {
+        allChars += numbers;
+        guaranteed += randomChar(numbers);
+      }
+      if (useSymbols) {
+        allChars += symbols;
+        guaranteed += randomChar(symbols);
+      }
+
+      if (allChars.length === 0) {
+        document.getElementById("password").textContent = "Selecione pelo menos uma opção.";
+        return;
+      }
+
+      let password = guaranteed;
+      for (let i = guaranteed.length; i < length; i++) {
+        password += randomChar(allChars);
+      }
+
+      // Embaralhar
+      password = password.split('').sort(() => 0.5 - Math.random()).join('');
+      document.getElementById("password").textContent = password;
+    }
+
+    function randomChar(str) {
+      return str[Math.floor(Math.random() * str.length)];
+    }
+  </script>
+
+   <div class="container1">
+    <a href="https://firefaucet.win/ref/396805">
+  <img src="FireFaucet-950x540.jpg" width="310"
+          height="600" alt="Fire Faucet">
+</a>
+  </div>
+
+  <div class="container2">
+    <a href="https://faucetpay.io/?r=603241">
+  <img src="FaucetPay.jpg" alt="Fire Faucet">
+</a>
+  </div>
+
+  
+   <div class="container3">
+   
+        <iframe
+          src="https://banners.faucetworld.in/300x600?r=157857"
+          width="300"
+          height="600"
+          
+         ></iframe>
+      
+  </div>
+</div>
+
+</body>
+</html>
